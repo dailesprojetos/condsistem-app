@@ -1,0 +1,78 @@
+<h2 class="mt-4">Formulário de Lançamentos</h2>
+<form>
+  <div class="form-group">
+    <label for="usr">Name:</label>
+    <input type="text" class="form-control" id="usr" required>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="email" class="form-control" id="pwd">
+    <input type="submit" class="btn btn-primary" value="Enviar">
+  </div>
+</form>
+
+<ol class="breadcrumb mb-4 mt-4">
+  <li class="breadcrumb-item active"><h5>CADASTRO DE CONDOMÍNIOS</h5></li>
+</ol>
+<!--{{ condominio.descricao }} Interpolação -->
+<form >
+  <div class="form-row">
+    <div class="col-md-4">
+      <label>CNPJ:*</label>
+      <input type="text" class="form-control" placeholder="Informe um CNPJ" required>
+    </div>
+    <div class="col-md-8">
+      <label>DESCRIÇÃO:*</label>
+      <input type="text" class="form-control" placeholder="Informe a descrição do condominio">
+    </div>
+  </div>
+  <hr/>
+  <div class="form-row">
+    <div class="col-md-6">
+      <label>ENDEREÇO:</label>
+      <input type="text" class="form-control" placeholder="Informe o endereço">
+    </div>
+    <div class="col-md-2">
+      <label>COMPLEMENTO:</label>
+      <input type="text" class="form-control" placeholder="Complemento">
+    </div>
+    <div class="col-md-4">
+      <label>BAIRRO:</label>
+      <input type="text" class="form-control" placeholder="Informe o bairro">
+    </div>
+  </div>
+  <br/>
+  <div class="form-row">
+    <div class="col-md-4">
+      <label>CIDADE:</label>
+      <input type="text" class="form-control" placeholder="Informe o bairro">
+    </div>
+    <div class="col-md-2">
+      <label>UF:</label>
+      <select id="cars" name="uf" class="form-control">
+        <option value="CE">CE</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="BA">BA</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label>CONTATO:</label>
+      <input type="text" class="form-control" placeholder="Informe o contato">
+    </div>
+    <div class="col-md-4">
+      <label>EMAIL:</label>
+      <input type="email" class="form-control" placeholder="Informe o E-mail">
+    </div>
+  </div>
+  <hr/>
+  <div>
+    <button type="submit" class="btn btn-success"  style="margin-right: 5px;">
+      <i class="fa fa-save"></i> Gravar Registro
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="fa fa-table"></i> Relação dos Condominios
+    </button>
+  </div>
+  <hr/>
+</form>

@@ -1,0 +1,74 @@
+<ol class="breadcrumb mb-4 mt-4">
+  <li class="breadcrumb-item active"><h5>CADASTRO DE CONDOMÍNIOS</h5></li>
+</ol>
+<!--{{ condominio.descricao }} Interpolação -->
+<form #condominioForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="col-md-4">
+      <label>CNPJ:*</label>
+      <input type="text" class="form-control" placeholder="Informe um CNPJ"
+      [(ngModel)]= "condominio.cnpj" name="cnpj" required>
+    </div>
+    <div class="col-md-8">
+      <label>DESCRIÇÃO:*</label>
+      <input type="text" class="form-control" placeholder="Informe a descrição do condominio"
+        [(ngModel)]= "condominio.descricao" name="descricao" required>
+    </div>
+  </div>
+  <hr/>
+  <div class="form-row">
+    <div class="col-md-6">
+      <label>ENDEREÇO:</label>
+      <input type="text" class="form-control" placeholder="Informe o endereço"
+      [(ngModel)]= "endereco.logradouro" name="logradouro">
+    </div>
+    <div class="col-md-2">
+      <label>COMPLEMENTO:</label>
+      <input type="text" class="form-control" placeholder="Complemento"
+      [(ngModel)]= "endereco.complemento" name="complemento">
+    </div>
+    <div class="col-md-4">
+      <label>BAIRRO:</label>
+      <input type="text" class="form-control" placeholder="Informe o bairro"
+      [(ngModel)]= "endereco.bairro" name="bairro">
+    </div>
+  </div>
+  <br/>
+  <div class="form-row">
+    <div class="col-md-4">
+      <label>CIDADE:</label>
+      <input type="text" class="form-control" placeholder="Informe o bairro"
+      [(ngModel)]= "endereco.cidade" name="cidade">
+    </div>
+    <div class="col-md-2">
+      <label>UF:</label>
+      <select id="cars" class="form-control"
+        [(ngModel)]= "endereco.uf" name="uf">
+        <option value="CE">CE</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="BA">BA</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label>CONTATO:</label>
+      <input type="text" class="form-control" placeholder="Informe o contato"
+      [(ngModel)]= "endereco.contato" name="contato">
+    </div>
+    <div class="col-md-4">
+      <label>EMAIL:</label>
+      <input type="email" class="form-control" placeholder="Informe o E-mail"
+      [(ngModel)]= "endereco.email" name="email">
+    </div>
+  </div>
+  <hr/>
+  <div>
+    <button type="submit" class="btn btn-success"  style="margin-right: 5px;">
+      <i class="fa fa-save"></i> Gravar Registro
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="fa fa-table"></i> Relação dos Condominios
+    </button>
+  </div>
+  <hr/>
+</form>
