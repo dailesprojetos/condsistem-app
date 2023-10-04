@@ -25,6 +25,9 @@ export class CondominiosFormComponent implements OnInit {
 
   onNovo(form: NgForm){
     form.form.reset();
+    this.cnpj = '';
+    this.sucesso = false;
+    this.errors = [];
   }
 
   ngOnInit(): void {
