@@ -1,49 +1,98 @@
-<ol class="breadcrumb mb-4 mt-4">
-  <li class="breadcrumb-item active"><h5>CADASTRO DE CONDOMÍNIOS</h5></li>
+<hr>
+<ol class="breadcrumb mb mt">
+  <li class="breadcrumb-item active"><h5>{{ condominio.cnpj ?
+    'ALTERAÇÃO DAS INFORMAÇÕES DE CONDOMINIO NO SISTEMA':
+    'CADASTRO DE NOVOS CONDOMINIOS NO SISTEMA'}}</h5></li>
 </ol>
+<hr>
 <!--{{ condominio.descricao }} Interpolação -->
-<form #condominioForm="ngForm" (ngSubmit)="onSubmit(condominioForm)">
+<form #condominioForm="ngForm" (ngSubmit)="onSalvar(condominioForm)">
+<div class="botoes form-row">
+  <button
+      type="button" [disabled]="desabilitaBotao"
+      class="btn btn-warning col-md-3 form-control"
+      routerLink="/condominios-lista"
+      style="align-items: center">
+      <i class="fa fa-table"></i> Relação dos Condominios
+    </button>
+</div>
+
   <div class="form-row">
     <div class="col-md-4">
       <label id="CNPJ">CNPJ:*</label>
-      <input type="text" class="form-control" placeholder="Informe um CNPJ"
-      [(ngModel)]= "condominio.cnpj" name="cnpj" id="CNPJ">
+      <input [disabled]="!desabilitaBotao"
+        type="number"
+        class="form-control"
+        placeholder="Informe um CNPJ"
+        [(ngModel)]="condominio.cnpj"
+        name="cnpj"
+        id="CNPJ"
+      />
     </div>
     <div class="col-md-8">
       <label>DESCRIÇÃO:*</label>
-      <input type="text" class="form-control" placeholder="Informe a descrição do condominio"
-        [(ngModel)]= "condominio.descricao" name="descricao">
+      <input [disabled]="!desabilitaBotao"
+        type="text"
+        class="form-control"
+        placeholder="Informe a descrição do condominio"
+        [(ngModel)]="condominio.descricao"
+        name="descricao"
+      />
     </div>
   </div>
-  <hr/>
+  <hr />
   <div class="form-row">
     <div class="col-md-6">
       <label>ENDEREÇO:</label>
-      <input type="text" class="form-control" placeholder="Informe o endereço"
-      [(ngModel)]= "endereco.logradouro" name="logradouro">
+      <input [disabled]="!desabilitaBotao"
+        type="text"
+        class="form-control"
+        placeholder="Informe o endereço"
+        [(ngModel)]="condominio.logradouro"
+        name="logradouro"
+      />
     </div>
     <div class="col-md-2">
       <label>COMPLEMENTO:</label>
-      <input type="text" class="form-control" placeholder="Complemento"
-      [(ngModel)]= "endereco.complemento" name="complemento">
+      <input [disabled]="!desabilitaBotao"
+        type="text"
+        class="form-control"
+        placeholder="Complemento"
+        [(ngModel)]="condominio.complemento"
+        name="complemento"
+      />
     </div>
     <div class="col-md-4">
       <label>BAIRRO:</label>
-      <input type="text" class="form-control" placeholder="Informe o bairro"
-      [(ngModel)]= "endereco.bairro" name="bairro">
+      <input [disabled]="!desabilitaBotao"
+        type="text"
+        class="form-control"
+        placeholder="Informe o bairro"
+        [(ngModel)]="condominio.bairro"
+        name="bairro"
+      />
     </div>
   </div>
-  <br/>
+  <br />
   <div class="form-row">
     <div class="col-md-4">
       <label>CIDADE:</label>
-      <input type="text" class="form-control" placeholder="Informe o bairro"
-      [(ngModel)]= "endereco.cidade" name="cidade">
+      <input [disabled]="!desabilitaBotao"
+        type="text"
+        class="form-control"
+        placeholder="Informe o bairro"
+        [(ngModel)]="condominio.cidade"
+        name="cidade"
+      />
     </div>
     <div class="col-md-2">
       <label>UF:</label>
-      <select id="cars" class="form-control"
-        [(ngModel)]= "endereco.uf" name="uf">
+      <select [disabled]="!desabilitaBotao"
+        id="cars"
+        class="form-control"
+        [(ngModel)]="condominio.uf"
+        name="uf"
+      >
         <option value="CE">CE</option>
         <option value="PE">PE</option>
         <option value="PI">PI</option>
@@ -52,39 +101,96 @@
     </div>
     <div class="col-md-2">
       <label>CONTATO:</label>
-      <input type="text" class="form-control" placeholder="Informe o contato"
-      [(ngModel)]= "endereco.contato" name="contato">
+      <input
+        type="text" [disabled]="!desabilitaBotao"
+        class="form-control"
+        placeholder="Informe o contato"
+        [(ngModel)]="condominio.contato"
+        name="contato"
+      />
     </div>
     <div class="col-md-4">
       <label>EMAIL:</label>
-      <input type="email" class="form-control" placeholder="Informe o E-mail"
-      [(ngModel)]= "condominio.email" name="email">
+      <input [disabled]="!desabilitaBotao"
+        type="email"
+        class="form-control"
+        placeholder="Informe o E-mail"
+        [(ngModel)]="condominio.email"
+        name="email"
+      />
     </div>
+
   </div>
-  <hr/>
-  <div>
-    <button type="button" class="btn btn-success" style="margin-right: 5px;"
-      (click)="onNovo(condominioForm)">
+  <br>
+  <hr />
+
+  <div class="botoes form-row" style="align-items: center">
+
+    <h6 style="margin-right: 4px">PESQUISAR POR CNPJ:</h6>
+    <input type="number" class="form-control col-md-2"
+    style="margin-right: 4px">
+
+    <button
+      type="button" [disabled]="desabilitaBotaoNovo"
+      class="btn btn-success col-md-2 form-control"
+      style="margin-right: 4px"
+      (click)="onNovo(condominioForm)" id="botaoNovo">
       <i class="fa fa-notes-medical"></i> Novo Registro
     </button>
-    <button type="submit" class="btn btn-success"  style="margin-right: 5px;">
-      <i class="fa fa-save"></i> Gravar Registro
+
+    <button
+      type="button" [disabled]="!desabilitaBotaoAlterar"
+      class="btn btn-success col-md-2 form-control"
+      style="margin-right: 4px"
+      (click)="onAlterar(condominioForm)">
+      <i class="fa fa-notes-medical"></i> Alterar
     </button>
-    <button type="button" class="btn btn-success">
-      <i class="fa fa-table"></i> Relação dos Condominios
+
+    <button
+      type="submit" id="botaoCadastro"
+      [disabled]="!desabilitaBotao"
+      class="btn btn-success col-md-2 form-control"
+      data-toggle="modal"
+      data-target="#modalMensagens"
+      style="margin-right: 4px">
+      <i class="fa fa-save"></i> Gravar
+    </button>
+
+    <button
+      type="button" [disabled]="!desabilitaBotao"
+      class="btn btn-success col-md-2 form-control"
+      (click)="onCancelar(condominioForm)"
+      style="align-items: center">
+      <i class="fa fa-table"></i> Cancelar
     </button>
   </div>
-  <hr/>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
-        Registro salvo/atualizado com sucesso!
-      </div>
-      <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
-        {{ erro }}
-      </div>
-      <div class="alert alert-warning" role="alert" *ngIf="cnpj == 'undefined'">
-        CNPJ já cadastro no sistema!
+
+  <!-- Modal de Mensagens do Sistema-->
+  <div id="modalMensagens" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>MENSAGENS DO SISTEMA AO USUÁRIO</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+                Registro salvo/atualizado com sucesso!
+              </div>
+              <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                {{ erro }}
+              </div>
+              <div class="alert alert-warning" role="alert" *ngIf="cnpj == 'undefined'">
+                CNPJ já cadastro no sistema!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,14 @@ export class Condominio {
   descricao: string = '';
   dataCadastro: string = '';
   email: string = '';
-  endereco: object = [];
+  logradouro: string = '';
+	complemento: string = '';
+	bairro: string = '';
+	cidade: string = '';
+	uf: string = '';
+	contato: string = '';
+  endereco: object = [
+  ];
 }
 
 export class Endereco{
@@ -15,6 +22,7 @@ export class Endereco{
 	uf: string = '';
 	contato: string = '';
 }
+
 
 
 

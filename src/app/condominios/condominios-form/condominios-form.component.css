@@ -1,10 +1,19 @@
 ol{
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(80, 161, 97);
 }
 h5{
-  color: aliceblue;
+  color: rgb(250, 249, 249);
 }
 label{
   font-weight: bold;
   font-size: 14px;
+}
+input,select{
+  background-color: rgb(236, 235, 235)
+}
+.botoes{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 6px;
 }

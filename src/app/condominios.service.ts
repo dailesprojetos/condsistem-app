@@ -9,14 +9,18 @@ import { Conexao } from './conexao';
 })
 export class CondominiosService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   salvar( condominio: Condominio) : Observable<Condominio>{
     return this.http.post<Condominio>(Conexao.baseURL+'/condominios',condominio);
   }
-  //Métodos
-  /*salvar( condominio: Condominio ) : Observable<Condominio> {
-    return this.http.post<Condominio>('http://localhost:8080/condominios',condominio);
-  }*/
+
+
+  getCondominios(): Observable<Condominio[]>{
+    return this.http.get<Condominio[]>(Conexao.baseURL+'/condominios')
+  }
+
+  getCondominioByCnpj(cnpj: string) : Observable<Condominio>{
+    return this.http.get<any>(`http://localhost:8080/condominios/cnpj/${cnpj}`);
+  }
 }

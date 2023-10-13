@@ -10,6 +10,8 @@ import { PlanocontasModule } from './planocontas/planocontas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CondominiosService } from './condominios.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,22 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     TemplateModule,
     CondominiosModule,
     PlanocontasModule,
     LancamentosModule,
+    DataTablesModule,
+  ],
+  exports:[
+    DataTablesModule
   ],
   providers: [
     CondominiosService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
