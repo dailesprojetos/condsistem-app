@@ -18,10 +18,13 @@ export class CondominiosFormComponent implements OnInit {
   cnpjObj: string = '';
 
   condominio: Condominio;
-  desabilitaBotao:boolean = false;
-  desabilitaBotaoAlterar:boolean = false;
   desabilitaBotaoNovo:boolean = false;
-  desabilitaInput:boolean = false;
+  desabilitaBotaoAlterar:boolean = false;
+  desabilitaBotaoSalvar:boolean = false;
+  desabilitaBotaoCancelar:boolean = false;
+  desabilitaBotaoInput:boolean = false;
+  desabilitaInput:boolean = true;
+
 
   //endereco: Endereco = new Endereco();
 
@@ -34,16 +37,17 @@ export class CondominiosFormComponent implements OnInit {
   }
 
   onLista(){
-    this.desabilitaBotaoAlterar = true;
-    this.desabilitaBotao = false;
+    //this.desabilitaBotaoAlterar = true;
+    //this.desabilitaBotao = false;
   }
 
   onNovo(condominioForm: NgForm){
-    condominioForm.reset();
+   condominioForm.reset();
     this.cnpj = '';
     this.sucesso = false;
     this.errors = [];
-    this.desabilitaBotao = true;
+    this.desabilitaBotaoSalvar = true;
+    this.desabilitaInput = false;
   }
 
   onAlterar(condominioForm: NgForm){
@@ -51,7 +55,8 @@ export class CondominiosFormComponent implements OnInit {
     this.cnpj = '';
     this.sucesso = false;
     this.errors = [];
-    this.desabilitaBotao = false;
+    this.desabilitaBotaoNovo = true;
+    this.desabilitaInput = false;
   }
 
   onCancelar(condominioForm: NgForm){
@@ -59,12 +64,13 @@ export class CondominiosFormComponent implements OnInit {
     this.cnpj = '';
     this.sucesso = false;
     this.errors = [];
-    this.desabilitaBotao = false;
+    this.desabilitaBotaoSalvar = false;
+    this.desabilitaInput = true;
   }
 
-  onSalvar(form: NgForm){
+  onSalvar(condominioForm: NgForm){
 
-    console.log(form)
+    console.log(condominioForm)
 
     this.service
     .salvar(this.condominio)
@@ -74,13 +80,11 @@ export class CondominiosFormComponent implements OnInit {
         this.cnpj = 'undefined'
         this.sucesso = false;
         this.errors = [];
-
       }else{
         this.sucesso = true;
         this.errors = [];
         this.cnpj = '';
-        form.form.reset();
-
+        condominioForm.reset();
       }
 
     }, errorResponse => {
@@ -92,6 +96,7 @@ export class CondominiosFormComponent implements OnInit {
   }
 
   ngOnInit(): Condominio {
+
     let params:any = this.activatedRoute.params
     if(params && params.value && params.value.cnpjObj){
       this.cnpjObj = params.value.cnpjObj;
@@ -103,7 +108,6 @@ export class CondominiosFormComponent implements OnInit {
         )
     }
 
-    this.desabilitaBotao = false;
     return this.condominio;
   }
 

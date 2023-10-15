@@ -9,7 +9,7 @@
 <form #condominioForm="ngForm" (ngSubmit)="onSalvar(condominioForm)">
 <div class="botoes form-row">
   <button
-      type="button" [disabled]="desabilitaBotao"
+      type="button"
       class="btn btn-warning col-md-3 form-control"
       routerLink="/condominios-lista"
       style="align-items: center">
@@ -20,7 +20,7 @@
   <div class="form-row">
     <div class="col-md-4">
       <label id="CNPJ">CNPJ:*</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="number"
         class="form-control"
         placeholder="Informe um CNPJ"
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-8">
       <label>DESCRIÇÃO:*</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="text"
         class="form-control"
         placeholder="Informe a descrição do condominio"
@@ -44,7 +44,7 @@
   <div class="form-row">
     <div class="col-md-6">
       <label>ENDEREÇO:</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="text"
         class="form-control"
         placeholder="Informe o endereço"
@@ -54,7 +54,7 @@
     </div>
     <div class="col-md-2">
       <label>COMPLEMENTO:</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="text"
         class="form-control"
         placeholder="Complemento"
@@ -64,7 +64,7 @@
     </div>
     <div class="col-md-4">
       <label>BAIRRO:</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="text"
         class="form-control"
         placeholder="Informe o bairro"
@@ -77,7 +77,7 @@
   <div class="form-row">
     <div class="col-md-4">
       <label>CIDADE:</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="text"
         class="form-control"
         placeholder="Informe o bairro"
@@ -87,7 +87,7 @@
     </div>
     <div class="col-md-2">
       <label>UF:</label>
-      <select [disabled]="!desabilitaBotao"
+      <select [disabled]="desabilitaInput"
         id="cars"
         class="form-control"
         [(ngModel)]="condominio.uf"
@@ -101,8 +101,8 @@
     </div>
     <div class="col-md-2">
       <label>CONTATO:</label>
-      <input
-        type="text" [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
+        type="text"
         class="form-control"
         placeholder="Informe o contato"
         [(ngModel)]="condominio.contato"
@@ -111,7 +111,7 @@
     </div>
     <div class="col-md-4">
       <label>EMAIL:</label>
-      <input [disabled]="!desabilitaBotao"
+      <input [disabled]="desabilitaInput"
         type="email"
         class="form-control"
         placeholder="Informe o E-mail"
@@ -148,7 +148,7 @@
 
     <button
       type="submit" id="botaoCadastro"
-      [disabled]="!desabilitaBotao"
+      [disabled]="!desabilitaBotaoSalvar"
       class="btn btn-success col-md-2 form-control"
       data-toggle="modal"
       data-target="#modalMensagens"
@@ -157,7 +157,7 @@
     </button>
 
     <button
-      type="button" [disabled]="!desabilitaBotao"
+      type="button" [disabled]="desabilitaBotaoCancelar"
       class="btn btn-success col-md-2 form-control"
       (click)="onCancelar(condominioForm)"
       style="align-items: center">
