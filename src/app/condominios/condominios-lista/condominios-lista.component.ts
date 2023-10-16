@@ -42,7 +42,7 @@ export class CondominiosListaComponent {
   ngOnInit(): void {
 
     this.dtOptions = {
-      pagingType:"full_numbers",
+      pagingType:"full",
       pageLength: 4,
       lengthMenu: [[4], [4]],
       language: {

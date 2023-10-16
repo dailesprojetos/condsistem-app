@@ -1,13 +1,14 @@
-<hr>
-<ol class="breadcrumb mb-4 mt-4">
-  <li class="breadcrumb-item active"><h5>LISTA DE CONDOMINIOS CADASTRADOS NO SISTEMA</h5></li>
-</ol>
+<br><br>
+<div class="form-row">
+  <div class="col-md-12">
+    <h4 class="fonte">LISTA DE CONDOMINIOS CADASTRADOS</h4>
+  </div>
+</div>
 <hr>
 
 <form #condominioLista="ngForm" >
 
-<div class="container">
-  <div class="row">
+  <div class="for-row">
     <div class="col-md-12">
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
           class="table table-hover table-striped" id="tableCondominio">
@@ -40,7 +41,4 @@
       </table>
     </div>
   </div>
-</div>
-
 </form>
-

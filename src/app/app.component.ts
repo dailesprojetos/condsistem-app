@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 
-//declare var jQuery: any;
+declare var jQuery: any;
 import * as $ from 'jquery';
 
 @Component({

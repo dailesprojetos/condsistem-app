@@ -1,21 +1,14 @@
-<hr>
-<ol class="breadcrumb mb mt">
-  <li class="breadcrumb-item active"><h5>{{ condominio.cnpj ?
-    'ALTERAÇÃO DAS INFORMAÇÕES DE CONDOMINIO NO SISTEMA':
-    'CADASTRO DE NOVOS CONDOMINIOS NO SISTEMA'}}</h5></li>
-</ol>
+<br><br>
+<div class="form-row">
+  <div class="col-md-12">
+    <h4 class="fonte">{{ condominio.cnpj ?
+        'ALTERAÇÃO DAS INFORMAÇÕES DE CONDOMINIO':
+        'CADASTRO DE NOVOS CONDOMINIOS'}}</h4>
+  </div>
+</div>
 <hr>
 <!--{{ condominio.descricao }} Interpolação -->
 <form #condominioForm="ngForm" (ngSubmit)="onSalvar(condominioForm)">
-<div class="botoes form-row">
-  <button
-      type="button"
-      class="btn btn-warning col-md-3 form-control"
-      routerLink="/condominios-lista"
-      style="align-items: center">
-      <i class="fa fa-table"></i> Relação dos Condominios
-    </button>
-</div>
 
   <div class="form-row">
     <div class="col-md-4">
@@ -29,6 +22,7 @@
         id="CNPJ"
       />
     </div>
+
     <div class="col-md-8">
       <label>DESCRIÇÃO:*</label>
       <input [disabled]="desabilitaInput"
@@ -41,6 +35,7 @@
     </div>
   </div>
   <hr />
+
   <div class="form-row">
     <div class="col-md-6">
       <label>ENDEREÇO:</label>
@@ -52,6 +47,7 @@
         name="logradouro"
       />
     </div>
+
     <div class="col-md-2">
       <label>COMPLEMENTO:</label>
       <input [disabled]="desabilitaInput"
@@ -62,6 +58,7 @@
         name="complemento"
       />
     </div>
+
     <div class="col-md-4">
       <label>BAIRRO:</label>
       <input [disabled]="desabilitaInput"
@@ -72,8 +69,10 @@
         name="bairro"
       />
     </div>
+
   </div>
   <br />
+
   <div class="form-row">
     <div class="col-md-4">
       <label>CIDADE:</label>
@@ -85,6 +84,7 @@
         name="cidade"
       />
     </div>
+
     <div class="col-md-2">
       <label>UF:</label>
       <select [disabled]="desabilitaInput"
@@ -99,6 +99,7 @@
         <option value="BA">BA</option>
       </select>
     </div>
+
     <div class="col-md-2">
       <label>CONTATO:</label>
       <input [disabled]="desabilitaInput"
@@ -109,6 +110,7 @@
         name="contato"
       />
     </div>
+
     <div class="col-md-4">
       <label>EMAIL:</label>
       <input [disabled]="desabilitaInput"
@@ -119,50 +121,66 @@
         name="email"
       />
     </div>
-
   </div>
   <br>
   <hr />
 
   <div class="botoes form-row" style="align-items: center">
+    <div class="col-md-2">
+      <button
+        type="button" [disabled]="desabilitaBotaoNovo"
+        class="btn btn-success form-control"
+        style="margin-right: 4px" routerLink="/condominios"
+        (click)="onNovo(condominioForm)" id="botaoNovo">
+        <i class="fa fa-notes-medical"></i> Novo Registro
+      </button>
+    </div>
+    <br>
 
-    <h6 style="margin-right: 4px">PESQUISAR POR CNPJ:</h6>
-    <input type="number" class="form-control col-md-2"
-    style="margin-right: 4px">
+    <div class="col-md-2">
+      <button
+        type="button" [disabled]="!desabilitaBotaoAlterar"
+        class="btn btn-success form-control"
+        style="margin-right: 4px"
+        (click)="onAlterar(condominioForm)">
+        <i class="fa fa-edit"></i>Alterar
+      </button>
+    </div>
+    <br><br>
 
-    <button
-      type="button" [disabled]="desabilitaBotaoNovo"
-      class="btn btn-success col-md-2 form-control"
-      style="margin-right: 4px"
-      (click)="onNovo(condominioForm)" id="botaoNovo">
-      <i class="fa fa-notes-medical"></i> Novo Registro
-    </button>
+    <div class="col-md-2">
+      <button
+        type="submit" id="botaoCadastro"
+        [disabled]="!desabilitaBotaoSalvar"
+        class="btn btn-success form-control"
+        data-toggle="modal"
+        data-target="#modalMensagens"
+        style="margin-right: 4px">
+        <i class="fa fa-save"></i> Gravar
+      </button>
+    </div>
+    <br><br>
 
-    <button
-      type="button" [disabled]="!desabilitaBotaoAlterar"
-      class="btn btn-success col-md-2 form-control"
-      style="margin-right: 4px"
-      (click)="onAlterar(condominioForm)">
-      <i class="fa fa-notes-medical"></i> Alterar
-    </button>
+    <div class="col-md-2">
+      <button
+        type="button" [disabled]="desabilitaBotaoCancelar"
+        class="btn btn-success form-control"
+        (click)="onCancelar(condominioForm)"
+        style="align-items: center">
+        <i class="fa fa-ban"></i> Cancelar
+      </button>
+    </div>
+    <br><br>
 
-    <button
-      type="submit" id="botaoCadastro"
-      [disabled]="!desabilitaBotaoSalvar"
-      class="btn btn-success col-md-2 form-control"
-      data-toggle="modal"
-      data-target="#modalMensagens"
-      style="margin-right: 4px">
-      <i class="fa fa-save"></i> Gravar
-    </button>
-
-    <button
-      type="button" [disabled]="desabilitaBotaoCancelar"
-      class="btn btn-success col-md-2 form-control"
-      (click)="onCancelar(condominioForm)"
-      style="align-items: center">
-      <i class="fa fa-table"></i> Cancelar
-    </button>
+    <div class="col-md-4">
+      <button
+        type="button"
+        class="btn btn-dark  form-control"
+        routerLink="/condominios-lista"
+        style="align-items: center">
+        <i class="fa fa-table"></i> Relação dos Condominios
+      </button>
+    </div>
   </div>
 
   <!-- Modal de Mensagens do Sistema-->

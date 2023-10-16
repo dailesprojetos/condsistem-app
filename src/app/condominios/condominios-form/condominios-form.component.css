@@ -1,8 +1,8 @@
 ol{
-  background-color: rgb(80, 161, 97);
+  background-color: rgb(249, 250, 249);
 }
 h5{
-  color: rgb(250, 249, 249);
+  color: rgb(8, 0, 0);
 }
 label{
   font-weight: bold;
@@ -15,5 +15,6 @@ input,select{
   display: flex;
   justify-content: right;
   align-items: center;
-  padding-right: 6px;
+  padding-right: 1px;
 }
+
