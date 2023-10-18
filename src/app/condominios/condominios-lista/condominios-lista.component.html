@@ -15,7 +15,7 @@
         <thead>
           <tr>
             <th>CNPJ</th>
-            <th>DESCRIÇÃO</th>
+            <th>CONDOMINIO</th>
             <th>DATA CADASTRO</th>
             <th>CONTATO</th>
             <th>AÇÃO</th>
@@ -32,7 +32,8 @@
                     routerLink="/condominios/cnpj/{{ condominio.cnpj }}">
                 <i class="fa fa-edit"></i>
               </button>
-              <button class="btn btn-danger ml-2" #deleta >
+              <button class="btn btn-danger ml-2" (click)="preparaDelecao(condominio)"
+                      data-toggle="modal" data-target="#modalDelecao">
                 <i class="fa fa-trash"></i>
               </button>
             </td>
@@ -41,4 +42,23 @@
       </table>
     </div>
   </div>
+
+  <!--Modal para deleção-->
+  <div id="modalDelecao" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>CONDSYSTEM - Exclusão de Registro</h4>
+        </div>
+        <div class="modal-body" *ngIf="condominioSelecionado">
+          Confirma a exclusão do Condominio: "{{condominioSelecionado.descricao}}"?
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger">Confirma</button>
+          <button class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </form>

@@ -11,10 +11,13 @@ export class CondominiosService {
 
   constructor(private http: HttpClient) {}
 
-  salvar( condominio: Condominio) : Observable<Condominio>{
+  salvar(condominio: Condominio) : Observable<Condominio>{
     return this.http.post<Condominio>(Conexao.baseURL+'/condominios',condominio);
   }
 
+  atualizar(condominio: Condominio) : Observable<any>{
+    return this.http.put<Condominio>(Conexao.baseURL+`/condominios/cnpj/${condominio.cnpj}`,condominio);
+  }
 
   getCondominios(): Observable<Condominio[]>{
     return this.http.get<Condominio[]>(Conexao.baseURL+'/condominios')

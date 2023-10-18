@@ -1,5 +1,5 @@
 import { FormGroup, FormsModule, NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CondominiosService } from 'src/app/condominios.service';
 import { Condominio, Endereco } from '../condominio';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +15,9 @@ export class CondominiosFormComponent implements OnInit {
   sucesso: boolean = false;
   errors: String[] = [];
   cnpj: String = '';
+  id: String = '';
   cnpjObj: string = '';
+  @ViewChild('btnAlterar') Alterar:any;
 
   condominio: Condominio;
   desabilitaBotaoNovo:boolean = false;
@@ -24,7 +26,6 @@ export class CondominiosFormComponent implements OnInit {
   desabilitaBotaoCancelar:boolean = false;
   desabilitaBotaoInput:boolean = false;
   desabilitaInput:boolean = true;
-
 
   //endereco: Endereco = new Endereco();
 
@@ -36,13 +37,13 @@ export class CondominiosFormComponent implements OnInit {
     //this.condominio.endereco=this.endereco;
   }
 
-  onLista(){
-    //this.desabilitaBotaoAlterar = true;
+  onLista(condominioForm: NgForm){
+    this.desabilitaBotaoAlterar = true;
     //this.desabilitaBotao = false;
   }
 
   onNovo(condominioForm: NgForm){
-   condominioForm.reset();
+    condominioForm.reset();
     this.cnpj = '';
     this.sucesso = false;
     this.errors = [];
@@ -51,12 +52,12 @@ export class CondominiosFormComponent implements OnInit {
   }
 
   onAlterar(condominioForm: NgForm){
-    condominioForm.reset();
     this.cnpj = '';
     this.sucesso = false;
     this.errors = [];
     this.desabilitaBotaoNovo = true;
     this.desabilitaInput = false;
+    this.desabilitaBotaoSalvar = true;
   }
 
   onCancelar(condominioForm: NgForm){
@@ -66,12 +67,32 @@ export class CondominiosFormComponent implements OnInit {
     this.errors = [];
     this.desabilitaBotaoSalvar = false;
     this.desabilitaInput = true;
+    this.desabilitaBotaoNovo = false;
+    this.desabilitaBotaoAlterar = false;
   }
 
-  onSalvar(condominioForm: NgForm){
+  onAtualizarRegistro(condominioForm: NgForm){
 
     console.log(condominioForm)
+    this.service
+    .atualizar(this.condominio)
+    .subscribe( response => {
+      console.log(response);
+        this.sucesso = false;
+        this.errors = [];
+        this.sucesso = true;
+        this.errors = [];
+        //condominioForm.reset();
+      }, errorResponse => {
+      this.sucesso = false;
+      this.errors = errorResponse.error.errors;
+      console.log(errorResponse.error.errors);
+    }
+    );
+  }
 
+  onSalvarRegistro(condominioForm: NgForm){
+    console.log(condominioForm)
     this.service
     .salvar(this.condominio)
     .subscribe( response => {
@@ -93,6 +114,17 @@ export class CondominiosFormComponent implements OnInit {
       console.log(errorResponse.error.errors);
     }
     );
+
+  }
+
+  onSubmit(condominioForm: NgForm){
+
+    if(this.condominio.codigo){
+      this.onAtualizarRegistro(condominioForm);
+    } else {
+      this.onSalvarRegistro(condominioForm);
+    }
+
   }
 
   ngOnInit(): Condominio {
@@ -107,7 +139,6 @@ export class CondominiosFormComponent implements OnInit {
           errorResponse => this.condominio = new Condominio(),
         )
     }
-
     return this.condominio;
   }
 

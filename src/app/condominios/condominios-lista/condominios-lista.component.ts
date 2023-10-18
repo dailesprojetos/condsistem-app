@@ -1,5 +1,5 @@
 import { AppRoutingModule } from './../../app-routing.module';
-import { Component, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import { Condominio } from '../condominio';
 import { CondominiosService } from 'src/app/condominios.service';
 import { Subject } from 'rxjs';
@@ -12,28 +12,17 @@ import { NgForm } from '@angular/forms';
 })
 
 
-export class CondominiosListaComponent {
+export class CondominiosListaComponent  implements OnInit{
 
   condominios: Condominio[] = [];
+  condominioSelecionado: Condominio;
   dtOptions:DataTables.Settings={}
   dtTrigger:Subject<any> = new Subject<any>();
   @ViewChild('deletar') vdeletar!: ElementRef;
 
   constructor(private service: CondominiosService){
-
+      this.condominioSelecionado = new Condominio;
   }
-
-  /*ngOnTable(): void {
-
-    $('#tableCondominio').DataTable( {
-      pageLength: 4,
-      "lengthMenu": [[4], [4]],
-
-      language: {
-        url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json"
-      }
-  } );
-  }*/
 
   ngAfterViewInit(condominioLista: NgForm) {
    this.vdeletar?.nativeElement.OnInit.ViewChild
@@ -64,6 +53,10 @@ export class CondominiosListaComponent {
 
   ngOnDestroy(): void{
     this.dtTrigger.unsubscribe();
+  }
+
+  preparaDelecao(condominio: Condominio){
+    this.condominioSelecionado = condominio;
   }
 
 }

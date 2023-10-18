@@ -1,14 +1,14 @@
 <br><br>
 <div class="form-row">
   <div class="col-md-12">
-    <h4 class="fonte">{{ condominio.cnpj ?
-        'ALTERAÇÃO DAS INFORMAÇÕES DE CONDOMINIO':
-        'CADASTRO DE NOVOS CONDOMINIOS'}}</h4>
+    <h4 class="fonte">{{ condominio.cnpj
+        ? 'ALTERAÇÃO DAS INFORMAÇÕES DE CONDOMINIO'
+        : 'CADASTRO DE NOVOS CONDOMINIOS'}}</h4>
   </div>
 </div>
 <hr>
 <!--{{ condominio.descricao }} Interpolação -->
-<form #condominioForm="ngForm" (ngSubmit)="onSalvar(condominioForm)">
+<form #condominioForm="ngForm" (ngSubmit)="onSubmit(condominioForm)">
 
   <div class="form-row">
     <div class="col-md-4">
@@ -24,9 +24,9 @@
     </div>
 
     <div class="col-md-8">
-      <label>DESCRIÇÃO:*</label>
+      <label>CONDOMINIO:*</label>
       <input [disabled]="desabilitaInput"
-        type="text"
+        type="text" [size]="22"
         class="form-control"
         placeholder="Informe a descrição do condominio"
         [(ngModel)]="condominio.descricao"
@@ -130,7 +130,7 @@
       <button
         type="button" [disabled]="desabilitaBotaoNovo"
         class="btn btn-success form-control"
-        style="margin-right: 4px" routerLink="/condominios"
+        routerLink="/condominios"
         (click)="onNovo(condominioForm)" id="botaoNovo">
         <i class="fa fa-notes-medical"></i> Novo Registro
       </button>
@@ -138,12 +138,11 @@
     <br>
 
     <div class="col-md-2">
-      <button
-        type="button" [disabled]="!desabilitaBotaoAlterar"
+      <button #btnAlterar
+        type="button" [disabled]="desabilitaBotaoAlterar"
         class="btn btn-success form-control"
-        style="margin-right: 4px"
         (click)="onAlterar(condominioForm)">
-        <i class="fa fa-edit"></i>Alterar
+        <i class="fa fa-sync-alt"></i>Alterar
       </button>
     </div>
     <br><br>
@@ -154,8 +153,7 @@
         [disabled]="!desabilitaBotaoSalvar"
         class="btn btn-success form-control"
         data-toggle="modal"
-        data-target="#modalMensagens"
-        style="margin-right: 4px">
+        data-target="#modalMensagens">
         <i class="fa fa-save"></i> Gravar
       </button>
     </div>
@@ -165,7 +163,7 @@
       <button
         type="button" [disabled]="desabilitaBotaoCancelar"
         class="btn btn-success form-control"
-        (click)="onCancelar(condominioForm)"
+        (click)="onCancelar(condominioForm)" routerLink="/condominios"
         style="align-items: center">
         <i class="fa fa-ban"></i> Cancelar
       </button>
@@ -174,7 +172,7 @@
 
     <div class="col-md-4">
       <button
-        type="button"
+        type="button" (click)="onLista"
         class="btn btn-dark  form-control"
         routerLink="/condominios-lista"
         style="align-items: center">
@@ -188,7 +186,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>MENSAGENS DO SISTEMA AO USUÁRIO</h4>
+          <h4>CONDSYSTEM - Mensagem(s) ao Usuário</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -206,8 +204,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-dark" data-dismiss="modal">
+            <i class="fa fa-door-open"></i> Fechar</button>
         </div>
       </div>
     </div>
