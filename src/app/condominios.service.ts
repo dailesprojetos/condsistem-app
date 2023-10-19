@@ -19,6 +19,10 @@ export class CondominiosService {
     return this.http.put<Condominio>(Conexao.baseURL+`/condominios/cnpj/${condominio.cnpj}`,condominio);
   }
 
+  deletar(condominio: Condominio) : Observable<any>{
+    return this.http.delete<any>(`http://localhost:8080/condominios/${condominio.codigo}`);
+  }
+
   getCondominios(): Observable<Condominio[]>{
     return this.http.get<Condominio[]>(Conexao.baseURL+'/condominios')
   }

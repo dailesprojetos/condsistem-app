@@ -16,6 +16,8 @@ export class CondominiosListaComponent  implements OnInit{
 
   condominios: Condominio[] = [];
   condominioSelecionado: Condominio;
+  mensagemSucesso: String = '';
+  mensagemErro: String = '';
   dtOptions:DataTables.Settings={}
   dtTrigger:Subject<any> = new Subject<any>();
   @ViewChild('deletar') vdeletar!: ElementRef;
@@ -57,6 +59,16 @@ export class CondominiosListaComponent  implements OnInit{
 
   preparaDelecao(condominio: Condominio){
     this.condominioSelecionado = condominio;
+  }
+
+  deletarCondominio(){
+    this.service
+      .deletar(this.condominioSelecionado)
+      .subscribe(
+        response =>
+          this.mensagemSucesso = 'Condominio excluído com sucesso!',
+          erro => this.mensagemErro = 'Ocorreu um erro ao excluír o Condominio.'
+      )
   }
 
 }
