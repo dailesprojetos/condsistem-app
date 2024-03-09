@@ -6,7 +6,7 @@ import { CondominiosFormComponent } from './condominios-form/condominios-form.co
 const routes: Routes = [
   { path: 'condominios', component: CondominiosFormComponent},
   { path: 'condominios/:id', component: CondominiosFormComponent},
-  { path: 'condominios/cnpj/:cnpjObj', component: CondominiosFormComponent},
+  { path: 'condwebapi/condominios/cnpj/:cnpjObj', component: CondominiosFormComponent},
   { path: 'condominios-lista', component: CondominiosListaComponent}
 ];
 
