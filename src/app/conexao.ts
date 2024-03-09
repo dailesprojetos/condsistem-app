@@ -1,3 +1,3 @@
 export class Conexao{
-  static baseURL: string = 'http://localhost:8080';
+  static baseURL: string = 'http://localhost:8080/condwebapi';
 }
