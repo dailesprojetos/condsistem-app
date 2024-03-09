@@ -12,7 +12,7 @@ export class CondominiosService {
   constructor(private http: HttpClient) {}
 
   salvar(condominio: Condominio) : Observable<Condominio>{
-    return this.http.post<Condominio>(Conexao.baseURL+'/condominios',condominio);
+    return this.http.post<Condominio>(Conexao.baseURL+'/condwebapi/condominios',condominio);
   }
 
   atualizar(condominio: Condominio) : Observable<any>{
@@ -20,14 +20,14 @@ export class CondominiosService {
   }
 
   deletar(condominio: Condominio) : Observable<any>{
-    return this.http.delete<any>(`http://localhost:8080/condominios/${condominio.codigo}`);
+    return this.http.delete<any>(`http://localhost:8080/condwebapi/condominios/${condominio.codigo}`);
   }
 
   getCondominios(): Observable<Condominio[]>{
-    return this.http.get<Condominio[]>(Conexao.baseURL+'/condominios')
+    return this.http.get<Condominio[]>(Conexao.baseURL+'/condwebapi/condominios')
   }
 
   getCondominioByCnpj(cnpj: string) : Observable<Condominio>{
-    return this.http.get<any>(`http://localhost:8080/condominios/cnpj/${cnpj}`);
+    return this.http.get<any>(`http://localhost:8080/condwebapi/condominios/cnpj/${cnpj}`);
   }
 }
