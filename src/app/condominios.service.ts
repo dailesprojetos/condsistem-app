@@ -16,7 +16,7 @@ export class CondominiosService {
   }
 
   atualizar(condominio: Condominio) : Observable<any>{
-    return this.http.put<Condominio>(Conexao.baseURL+`/condominios/cnpj/${condominio.cnpj}`,condominio);
+    return this.http.put<Condominio>(Conexao.baseURL+`/condwebapi/condominios/cnpj/${condominio.cnpj}`,condominio);
   }
 
   deletar(condominio: Condominio) : Observable<any>{
