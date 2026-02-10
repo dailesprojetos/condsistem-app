@@ -2,6 +2,7 @@ export class Condominio {
   codigo: string = '';
   cnpj: string = '';
   descricao: string = '';
+  sindico: string = '';
   dataCadastro: string = '';
   email: string = '';
   logradouro: string = '';
