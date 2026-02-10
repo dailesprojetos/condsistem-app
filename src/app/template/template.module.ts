@@ -9,16 +9,17 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class TemplateModule { }

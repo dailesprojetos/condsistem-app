@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CondominiosFormComponent } from './condominios/condominios-form/condominios-form.component';
+import { HomeComponent } from './home/home.component';
+
 
 const routes: Routes = [
-  { path: '', component:CondominiosFormComponent}
+  { path: '',
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({

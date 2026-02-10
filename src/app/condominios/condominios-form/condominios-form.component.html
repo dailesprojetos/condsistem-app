@@ -152,6 +152,7 @@
         type="submit" id="botaoCadastro"
         [disabled]="!desabilitaBotaoSalvar"
         class="btn btn-success form-control"
+        (click)="onSubmit(condominioForm)"
         data-toggle="modal"
         data-target="#modalMensagens">
         <i class="fa fa-save"></i> Gravar

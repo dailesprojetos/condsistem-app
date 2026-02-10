@@ -9,9 +9,11 @@ import { CondominiosModule } from './condominios/condominios.module';
 import { PlanocontasModule } from './planocontas/planocontas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CondominiosService } from './condominios.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { provideAnimations } from '@angular/platform-browser/animations'
+import { provideToastr } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -30,10 +32,13 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule,
   ],
   exports:[
-    DataTablesModule
+    DataTablesModule,
   ],
   providers: [
-    CondominiosService
+    CondominiosService,
+    provideAnimations(),
+    provideToastr(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

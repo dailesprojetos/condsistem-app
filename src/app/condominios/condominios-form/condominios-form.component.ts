@@ -19,7 +19,7 @@ export class CondominiosFormComponent implements OnInit {
   cnpjObj: string = '';
   @ViewChild('btnAlterar') Alterar:any;
 
-  condominio: Condominio;
+  condominio: Condominio
   desabilitaBotaoNovo:boolean = false;
   desabilitaBotaoAlterar:boolean = false;
   desabilitaBotaoSalvar:boolean = false;
@@ -31,7 +31,7 @@ export class CondominiosFormComponent implements OnInit {
 
   constructor(
     private service: CondominiosService,
-    private activatedRoute : ActivatedRoute
+    private activatedRoute : ActivatedRoute,
     ){
     this.condominio = new Condominio();
     //this.condominio.endereco=this.endereco;

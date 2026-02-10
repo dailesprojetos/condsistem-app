@@ -10,6 +10,7 @@ export class Condominio {
 	cidade: string = '';
 	uf: string = '';
 	contato: string = '';
+  valor: number = 0;
   endereco: object = [
   ];
 }
