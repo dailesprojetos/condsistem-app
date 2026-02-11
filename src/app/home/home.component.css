@@ -4,4 +4,14 @@
   padding-top: 1%;
 }
 
+.fontestyle{
+  padding-left: 49px;
+  font-size: 25px;
+  font-weight: bold;
+}
 
+h5{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 20px;
+}
