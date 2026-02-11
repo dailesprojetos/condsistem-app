@@ -155,7 +155,7 @@
       <button
         type="button"
         [disabled]="desabilitaBotaoNovo"
-        class="btn btn-success form-control"
+        class="btn btn-primary form-control"
         routerLink="/condominios"
         (click)="onNovo(condominioForm)"
         id="botaoNovo"
@@ -170,7 +170,7 @@
         #btnAlterar
         type="button"
         [disabled]="desabilitaBotaoAlterar"
-        class="btn btn-success form-control"
+        class="btn btn-primary form-control"
         (click)="onAlterar(condominioForm)"
       >
         <i class="fa fa-sync-alt"></i>Alterar
@@ -183,7 +183,7 @@
         type="submit"
         id="botaoCadastro"
         [disabled]="!desabilitaBotaoSalvar"
-        class="btn btn-success form-control"
+        class="btn btn-primary form-control"
         (click)="onSubmit(condominioForm)"
         data-toggle="modal"
         data-target="#modalMensagens"
@@ -197,7 +197,7 @@
       <button
         type="button"
         [disabled]="desabilitaBotaoCancelar"
-        class="btn btn-success form-control"
+        class="btn btn-primary form-control"
         (click)="onCancelar(condominioForm)"
         routerLink="/condominios"
         style="align-items: center"
@@ -211,7 +211,7 @@
       <button
         type="button"
         (click)="(onLista)"
-        class="btn btn-dark form-control"
+        class="btn btn-primary form-control"
         routerLink="/condominios-lista"
         style="align-items: center"
       >
