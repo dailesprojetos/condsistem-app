@@ -4,3 +4,101 @@ ol{
 h5{
   color: rgb(250, 249, 249);
 }
+
+
+@media all and (max-width: 500px) {
+  
+  table tbody tr td{
+    display:block;
+    width: 402px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  table tbody tr td:before{
+    content: attr(data-title);
+    position: absolute;
+    left: 25px;
+    display: block;
+  }
+
+  table{
+    border: none;
+  }
+  
+  table thead{
+    display:none;
+  }
+  
+  table tbody tr{
+    margin-top: 10px;
+    display: block;
+    border: 1px solid rgb(189, 188, 188);
+    border-radius: 5px;
+  }
+
+  table tbody tr td button{
+    width: 49%;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  
+  table tbody tr td{
+    width: 347px;
+  }
+
+  table tbody tr td button{
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  
+  table tbody tr td{
+    width: 330px;
+  }
+
+  table tbody tr td button{
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  
+  table tbody tr td{
+    display:block;
+    width: 310px;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  
+  table tbody tr td{
+    width: 295px;
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+  
+  table tbody tr td{
+    width: 277px;
+  }
+}
+
+@media screen and (max-width: 344px) {
+  
+  table tbody tr td{
+    width: 262px;
+  }
+}
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 <br><br>
 <div class="form-row">
   <div class="col-md-12">
-    <h4 class="fonte">LISTA DE CONDOMINIOS CADASTRADOS</h4>
+    <!--<h4 class="fonte">LISTA DE CONDOMINIOS CADASTRADOS</h4>-->
   </div>
 </div>
 <hr>
@@ -23,10 +23,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let condominio of condominios">
-            <td>{{ condominio.cnpj }}</td>
-            <td>{{ condominio.descricao }}</td>
-            <td>{{ condominio.dataCadastro }}</td>
-            <td>{{ condominio.contato }}</td>
+            <td data-title="CNPJ:">{{ condominio.cnpj }}</td>
+            <td data-title="Descrição:">{{ condominio.descricao }}</td>
+            <td data-title="Data Cadastro:">{{ condominio.dataCadastro }}</td>
+            <td data-title="Contato:">{{ condominio.contato }}</td>
             <td>
               <button class="btn btn-primary"
                     routerLink="/condominios/cnpj/{{ condominio.cnpj }}">
