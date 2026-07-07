@@ -7,7 +7,7 @@ h5{
 
 
 @media all and (max-width: 500px) {
-  
+
   table tbody tr td{
     display:block;
     width: 402px;
@@ -26,11 +26,11 @@ h5{
   table{
     border: none;
   }
-  
+
   table thead{
     display:none;
   }
-  
+
   table tbody tr{
     margin-top: 10px;
     display: block;
@@ -45,7 +45,7 @@ h5{
 }
 
 @media screen and (max-width: 430px) {
-  
+
   table tbody tr td{
     width: 347px;
   }
@@ -56,7 +56,7 @@ h5{
 }
 
 @media screen and (max-width: 414px) {
-  
+
   table tbody tr td{
     width: 330px;
   }
@@ -67,7 +67,7 @@ h5{
 }
 
 @media screen and (max-width: 390px) {
-  
+
   table tbody tr td{
     display:block;
     width: 310px;
@@ -76,7 +76,7 @@ h5{
 }
 
 @media screen and (max-width: 375px) {
-  
+
   table tbody tr td{
     width: 295px;
   }
@@ -84,14 +84,14 @@ h5{
 }
 
 @media screen and (max-width: 360px) {
-  
+
   table tbody tr td{
     width: 277px;
   }
 }
 
 @media screen and (max-width: 344px) {
-  
+
   table tbody tr td{
     width: 262px;
   }
