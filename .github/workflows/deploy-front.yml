@@ -21,10 +21,10 @@ jobs:
       - name: Mover Build para a pasta do Servidor
         run: |
           # Limpa os arquivos antigos do Angular no servidor
-          rm -rf /home/dailes/meu-servidor/angular-dist/*
+          sudo rm -rf /home/dailes/meu-servidor/angular-dist/*
           # Copia o novo build gerado na pasta dist/ para o servidor
           # Nota: ajuste "nome-do-projeto" para o nome real gerado dentro de dist/
-          cp -r dist/nome-do-projeto/* /home/dailes/meu-servidor/angular-dist/
+          sudo cp -r dist/nome-do-projeto/* /home/dailes/meu-servidor/angular-dist/
 
       - name: Reiniciar Nginx
         run: |
