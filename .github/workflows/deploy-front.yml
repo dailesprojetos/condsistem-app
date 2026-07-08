@@ -1,0 +1,32 @@
+name: Deploy Frontend Angular
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: [self-hosted, frontend] # Alvo: Seu runner do front no WSL
+    
+    steps:
+      - name: Baixar Código do GitHub
+        uses: actions/checkout@v4
+
+      - name: Instalar Dependências e Compilar Angular
+        run: |
+          npm install
+          ng build --configuration=production
+
+      - name: Mover Build para a pasta do Servidor
+        run: |
+          # Limpa os arquivos antigos do Angular no servidor
+          rm -rf /home/dailes/meu-servidor/angular-dist/*
+          # Copia o novo build gerado na pasta dist/ para o servidor
+          # Nota: ajuste "nome-do-projeto" para o nome real gerado dentro de dist/
+          cp -r dist/nome-do-projeto/* /home/dailes/meu-servidor/angular-dist/
+
+      - name: Reiniciar Nginx
+        run: |
+          cd /home/dailes/meu-servidor
+          docker compose up -d --force-recreate frontend-nginx
