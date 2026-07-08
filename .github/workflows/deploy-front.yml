@@ -6,29 +6,30 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: [self-hosted, frontend] # Alvo: Seu runner do front no WSL
+  deploy-todo-em-um:
+    runs-on: [self-hosted, frontend]
     
     steps:
-      - name: Baixar Código do GitHub
+      - name: 1. Baixar Código do GitHub
         uses: actions/checkout@v4
 
-      - name: Instalar Dependências e Compilar Angular
+      - name: 2. Instalar Dependências e Compilar Angular
         run: |
           npm install
           ng build --configuration=production
 
-      - name: Mover Build para a pasta do Servidor
+      - name: 3. Identificar e Mover Ficheiros para o Servidor
         run: |
-          # 1. Mostra no log do GitHub o nome real da pasta gerada pelo Angular
-          echo "--- Pastas geradas dentro de dist: ---"
+          echo "--- Pastas reais geradas dentro de dist: ---"
           ls -la dist/
           
-          # 2. Executa a limpeza e a cópia (usando uma máscara genérica para copiar qualquer pasta que esteja lá dentro)
+          # Limpa a pasta do servidor
           sudo rm -rf /home/dailes/meu-servidor/angular-dist/*
+          
+          # Copia o conteúdo de qualquer subpasta que o Angular tenha criado para a raiz do servidor
           sudo cp -r dist/*/* /home/dailes/meu-servidor/angular-dist/ 2>/dev/null || sudo cp -r dist/* /home/dailes/meu-servidor/angular-dist/
 
-      - name: Reiniciar Nginx
+      - name: 4. Reiniciar Nginx
         run: |
           cd /home/dailes/meu-servidor
           docker compose up -d --force-recreate frontend-nginx
