@@ -16,7 +16,7 @@ jobs:
       - name: 2. Instalar Dependências e Compilar Angular
         run: |
           npm install
-          ng build --configuration=production
+          ng build --configuration=production --base-href /condsystemweb/
 
       - name: 3. Identificar e Mover Ficheiros para o Servidor
         run: |
